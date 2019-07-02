@@ -10,11 +10,13 @@ namespace WebAPITest.Controllers
 {
     public class MovieController : ApiController
     {
+        private static List<Movie> _listItems { get; set; } = new List<Movie>();
         // GET api/values
-        public IEnumerable<string> Get()
+        public IEnumerable<Movie> Get()
         {
+            return _listItems;
             // Retrieve all movies from db logic
-            return new string[] { "movie1 string", "movie2 string" };
+            //return new string[] { "movie1 string", "movie2 string" };
         }
 
         // GET api/values/5
@@ -25,10 +27,22 @@ namespace WebAPITest.Controllers
         }
 
         // POST api/values
-        public void Post([FromBody]Movie value)
+        public HttpResponseMessage Post([FromBody]Movie value)
         {
-            // Create movie in db logic
+            if(string.IsNullOrEmpty(value?.Title))
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+            var maxId = 0;
+            if(_listItems.Count>0)
+            {
+                maxId = _listItems.Max(x => x.Id);
+            }
+            value.Id = maxId + 1;
+            _listItems.Add(value);
+            return Request.CreateResponse(HttpStatusCode.Created, value);
         }
+
 
         // PUT api/values/5
         public void Put(int id, [FromBody]string value)
