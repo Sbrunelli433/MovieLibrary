@@ -10,46 +10,75 @@ namespace WebAPITest.Controllers
 {
     public class MovieController : ApiController
     {
-        private static List<Movie> _listItems { get; set; } = new List<Movie>();
-        // GET api/values
-        public IEnumerable<Movie> Get()
+        ApplicationDbContext db;
+        public MovieController()
         {
-            return _listItems;
-            // Retrieve all movies from db logic
+            db = new ApplicationDbContext();
+        }
+
+        // GET api/values
+        [HttpGet]
+        public IEnumerable<string> Get()
+        {
+
+
+            //List<string> listOfMovies = db.Movies.AsEnumerable();
+            //var moviesList = db.Movies.ToList().AsEnumerable();
+
+            var list = db.Movies.AsEnumerable().ToList();
+            var moviesList = list.ToString();
+            yield return moviesList;
+
+
+            //var moviesList = db.Movies.ToList();
+            //return moviesList;
+            //List<Movie> moviesList = new List<Movie>();
+
+            //HttpResponseMessage response;
+            //response = Request.CreateResponse(HttpStatusCode.OK, moviesList);
+            //return response;
+            //List<string> moviesList = new List<string>();
+
+
+
+
+
             //return new string[] { "movie1 string", "movie2 string" };
         }
 
+
         // GET api/values/5
-        public string Get(int id)
+
+        [Route("movies/all")]
+        [HttpGet]
+        public IHttpActionResult All()
         {
+
             // Retrieve movie by id from db logic
-            return "value";
+            var allMovies = All();
+            var moviesId = db.Movies.Select(i => i.Id);
+            return Ok();
         }
 
         // POST api/values
+        [HttpPost]
         public HttpResponseMessage Post([FromBody]Movie value)
         {
-            if(string.IsNullOrEmpty(value?.Title))
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-            }
-            var maxId = 0;
-            if(_listItems.Count>0)
-            {
-                maxId = _listItems.Max(x => x.Id);
-            }
-            value.Id = maxId + 1;
-            _listItems.Add(value);
-            return Request.CreateResponse(HttpStatusCode.Created, value);
+
+            //create movie in db logic
+
         }
 
 
+
         // PUT api/values/5
+        [HttpPut]
         public void Put(int id, [FromBody]string value)
         {
             // Update movie in db logic
         }
 
+        [HttpDelete]
         // DELETE api/values/5
         public void Delete(int id)
         {
