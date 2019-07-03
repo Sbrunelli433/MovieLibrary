@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    <script src="Scripts/jquery-3.4.1.js"></script>
+    <script type="text/javascript">
+        $('#getMovies').click(function (e) {
+            $("#getMoviesResult").val("");
+            $ajax({
+                contentType: 'application/json',
+                type: "GET",
+                url: "api/movies",
+                success: function (data, textStatus, jaXHR) {
+                    data.forEach(function (movie) {
+                        $("#getMoviesResult").val($("#getMoviesResult").val() + movie.Title + "|");
+                    });
+                },
+            })
+        })
+
+    </script>
+    <title></title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class=" col-sm-6">
+                <h2>Get All Movies</h2>
+            </div>
+            <button class="btn btn-default" id="getMovies">Get Movies</button>
+        </div>
+        <div>
+            <input type="text" class="form-control" id="getMoviesResult"/>
+        </div>
+    </div>
+    <!--<input id="btn" type="button" value="Get All Movies" />
+    <input id="btnClear" type="button" value="Clear" />
+    <ul id="ulMovies"></ul>-->
+
+</body>
+</html>
