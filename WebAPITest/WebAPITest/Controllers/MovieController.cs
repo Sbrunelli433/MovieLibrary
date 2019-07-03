@@ -111,8 +111,19 @@ namespace WebAPITest.Controllers
 
         [HttpDelete]
         // DELETE api/values/5
-        public void Delete(int id)
+        public HttpResponseMessage Delete(int id)
         {
+            var moviesId = db.Movies.Where(i => i.Id == id).FirstOrDefault();
+            if (moviesId == null)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Movie with Id " + moviesId.ToString() + " not found");
+            }
+            else
+            {
+                db.Movies.Remove(moviesId);
+                db.SaveChanges();
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
             // Delete movie from db logic
         }
     }
