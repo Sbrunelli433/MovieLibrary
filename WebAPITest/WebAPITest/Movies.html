@@ -3,10 +3,79 @@
 <head>
     <meta charset="utf-8" />
     <title>Movie Library</title>
+    <table id="MovieLibrary"></table>
 
     <script src="http://localhost:36354/Scripts/jquery-3.4.1.js"></script>
+
+    <h5 class="text-danger">
+        <b>Note:</b>Please Enter all details correctly and submit
+        Here i did not applied validations to this form
+    </h5>
+
+    <!--<div class="container">
+        <form name="postform" id="postform" class="form-horizontal">
+            <div class="form-group">
+                <label class="text-info">Movie Title</label>
+                <input type="text" id="movieTitle" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label class="text-info">Director Name</label>
+                <input type="text" id="directorName" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label class="text-info">Genre</label>
+                <input type="text" id="genre" class="form-control" />
+            </div>
+
+            <button type="submit" class="btn btn-default">Submit New Movie</button>
+        </form>
+    </div>-->
+    <table class="container">
+        <form name="postform" id="postform" class="form-horizontal">
+            <div class="form-group">
+                <label class="text-info">Movie Title</label>
+                <input type="text" id="movieTitle" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label class="text-info">Director Name</label>
+                <input type="text" id="directorName" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label class="text-info">Genre</label>
+                <input type="text" id="genre" class="form-control" />
+            </div>
+
+            <button type="submit" class="btn btn-default">Submit New Movie</button>
+        </form>
+    </table>
+
+
     <script type="text/javascript">
         $(document).ready(function () {
+            console.log("start of function");
+            $("#postform").submit(function (e) {
+                e.preventDefault();
+                var apiurl = 'http://localhost:36354/api/Movie';
+                var data = {
+                    Title: $("#movieTitle").val().trim(),
+                    DirectorName: $("#directorName").val().trim(),
+                    Genre: $("#genre").val().trim(),
+                }
+                $.ajax({
+                    url: apiurl,
+                    type: 'POST',
+                    dataType: 'json',
+                    data: data,
+                    success: function (d) {
+                        console.log("yay!", d);
+                        alert("Saved Successfully");
+                        document.getElementById("postform").reset();
+                    },
+                    error: function () {
+                        alert("Error, please try again");
+                    }
+                })
+            })
             var ulMovies = $('#ulMovies');
 
             $('#btn').click(function () {
@@ -16,25 +85,54 @@
                     dataType: 'json',
                     success: function (data) {
 
-                        ulMovies.empty();
-                        $.each(data, function (index, val) {
-                            var movie = val.Title;
-                            ulMovies.append('<li>' + movie + '</li>')
 
-                        });
+                        $("#DIV").html('');
+                        var DIV = '';
+
+                        ulMovies.empty();
+                        //$.each(data, function (i, item) {
+                        //    var rows = "<tr>" + "<td id ='Movie Title'>" + item.Title + "</td>" +
+                        //        "<td id='Director Name'>" + item.DirectorName + "</td>" +
+                        //        "<td id='Genre'>" + item.Genre + "</td>";
+                        //    $('#Table').append(rows);
+
+                        $.each(data, function (index, val) {
+                            var table = "<tr><th>Movie Title</th><th>Director's Name</th><th>Genre</th></tr>";
+                            var x = index.getElementsByTagName("movies");
+                            for (var i = 0; i < x.length; i++) {
+                                table += "<tr><td>" + x[i].getElementsByTagName("Title")[0].Title "</td><td>" +
+                                    x[i].getElementsByTagName("Director's Name").DirectorName"</td><td>" +
+                                        x[i].getElementsByTagName("Genre").Genre"</td></tr>";
+
+                            }
+
+                            var movieTitle = val.Title;
+                            var movieDirector = val.DirectorName;
+                            var movieGenre = val.Genre;
+                            ulMovies.append('<div>' + movieTitle + '</div>')
+
+
+                            });
                     }
+
                 });
             });
+
             $('#btnClear').click(function () {
                 ulMovies.empty();
             });
+
         });
     </script>
+    <div class="table"
 </head>
 <body>
+    <br />
+    <br />
 
     <input id="btn" type="button" value="Get All Movies" />
     <input id="btnClear" type="button" value="Clear" />
+    <!--<input id="btnCreate" type="button" value="Create"/>-->
     <ul id="ulMovies"></ul>
 
 </body>
