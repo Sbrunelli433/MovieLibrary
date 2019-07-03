@@ -18,16 +18,15 @@ namespace WebAPITest.Controllers
 
         // GET api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IHttpActionResult Get()
         {
 
 
             //List<string> listOfMovies = db.Movies.AsEnumerable();
             //var moviesList = db.Movies.ToList().AsEnumerable();
 
-            var list = db.Movies.AsEnumerable().ToList();
-            var moviesList = list.ToString();
-            yield return moviesList;
+            var moviesList = db.Movies.ToList();
+            return Ok(moviesList);
 
 
             //var moviesList = db.Movies.ToList();
@@ -49,32 +48,64 @@ namespace WebAPITest.Controllers
 
         // GET api/values/5
 
-        [Route("movies/all")]
+        //[Route("movies/all")]
         [HttpGet]
-        public IHttpActionResult All()
+        public HttpResponseMessage Get(int id)
         {
-
             // Retrieve movie by id from db logic
-            var allMovies = All();
-            var moviesId = db.Movies.Select(i => i.Id);
-            return Ok();
+            var moviesId = db.Movies.Where(i => i.Id == id).FirstOrDefault();
+            if (moviesId != null)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, moviesId);
+            }
+            else
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Movie with Id " + moviesId.ToString() + " not found");
+            }
+            //return Ok(moviesId);
+            //return "value";
         }
 
         // POST api/values
         [HttpPost]
         public HttpResponseMessage Post([FromBody]Movie value)
         {
+            try
+            {
+                db.Movies.Add(value);
+                db.SaveChanges();
 
-            //create movie in db logic
-
+                var response = Request.CreateResponse<Movie>(HttpStatusCode.Created, value);
+                response.Headers.Location = new Uri(Request.RequestUri + value.Id.ToString());
+                return response;
+            }
+            catch(Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
         }
 
 
 
         // PUT api/values/5
         [HttpPut]
-        public void Put(int id, [FromBody]string value)
+        public HttpResponseMessage Put(int id, [FromBody]string value)
         {
+            var moviesId = db.Movies.Where(i => i.Id == id).FirstOrDefault();
+            if (moviesId == null)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Movie with Id " + moviesId.ToString() + " not found");
+            }
+            else
+            {
+                value = moviesId.Title;
+                value = moviesId.DirectorName;
+                value = moviesId.Genre;
+
+                db.SaveChanges();
+                return Request.CreateResponse(HttpStatusCode.OK, moviesId);
+                
+            }
             // Update movie in db logic
         }
 
