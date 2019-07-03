@@ -89,22 +89,21 @@ namespace WebAPITest.Controllers
 
         // PUT api/values/5
         [HttpPut]
-        public HttpResponseMessage Put(int id, [FromBody]string value)
+        public HttpResponseMessage Put(int id, [FromBody]Movie value)
         {
-            var moviesId = db.Movies.Where(i => i.Id == id).FirstOrDefault();
-            if (moviesId == null)
+            var movie = db.Movies.FirstOrDefault(e => e.Id == id);
+            if (movie == null)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Movie with Id " + moviesId.ToString() + " not found");
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Movie with Id " + id.ToString() + " not found");
             }
             else
             {
-                value = moviesId.Title;
-                value = moviesId.DirectorName;
-                value = moviesId.Genre;
+                movie.Title = value.Title;
+                movie.DirectorName = value.DirectorName;
+                movie.Genre= value.Genre;
 
                 db.SaveChanges();
-                return Request.CreateResponse(HttpStatusCode.OK, moviesId);
-                
+                return Request.CreateResponse(HttpStatusCode.OK, movie);
             }
             // Update movie in db logic
         }
