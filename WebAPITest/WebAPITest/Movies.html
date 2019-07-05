@@ -33,7 +33,8 @@
     <table class="container">
         <form name="postform" id="postform" class="form-horizontal">
             <div class="form-group">
-                <label class="text-info">Movie Title</label>
+                <label for="movieTitle">Movie Title</label>
+                <!--<label class="text-info">Movie Title</label>-->
                 <input type="text" id="movieTitle" class="form-control" />
             </div>
             <div class="form-group">
@@ -77,6 +78,7 @@
                 })
             })
             var ulMovies = $('#ulMovies');
+            var mytable1 = $('#mytable1');
 
             $('#btn').click(function () {
                 $.ajax({
@@ -84,35 +86,21 @@
                     url: 'api/Movie',
                     dataType: 'json',
                     success: function (data) {
-
-
-                        $("#DIV").html('');
-                        var DIV = '';
-
                         ulMovies.empty();
-                        //$.each(data, function (i, item) {
-                        //    var rows = "<tr>" + "<td id ='Movie Title'>" + item.Title + "</td>" +
-                        //        "<td id='Director Name'>" + item.DirectorName + "</td>" +
-                        //        "<td id='Genre'>" + item.Genre + "</td>";
-                        //    $('#Table').append(rows);
-
                         $.each(data, function (index, val) {
-                            var table = "<tr><th>Movie Title</th><th>Director's Name</th><th>Genre</th></tr>";
-                            var x = index.getElementsByTagName("movies");
-                            for (var i = 0; i < x.length; i++) {
-                                table += "<tr><td>" + x[i].getElementsByTagName("Title")[0].Title "</td><td>" +
-                                    x[i].getElementsByTagName("Director's Name").DirectorName"</td><td>" +
-                                        x[i].getElementsByTagName("Genre").Genre"</td></tr>";
-
-                            }
-
-                            var movieTitle = val.Title;
+                            var index = val.index;
+                            var movie = val.Title;
                             var movieDirector = val.DirectorName;
                             var movieGenre = val.Genre;
-                            ulMovies.append('<div>' + movieTitle + '</div>')
+                            $("#mytable1").append("<tr>" +
+                                "<td>" + index + "</td>" +
+                                "<td>" + movie + "</td>" +
+                                "<td>" + movieDirector + "</td>" +
+                                "<td>" + movieGenre + "</td></tr>");
 
+                            ulMovies.append('<li>' + movie + '</li>')
 
-                            });
+                        });
                     }
 
                 });
@@ -120,17 +108,28 @@
 
             $('#btnClear').click(function () {
                 ulMovies.empty();
+                mytable1.empty();
             });
 
         });
     </script>
-    <div class="table"
 </head>
+
+<table id="mytable1" border="1">
+    <tr>
+        <td>Index</td>
+        <td>Movie Title</td>
+        <td>Director's Name</td>
+        <td>Genre</td>
+    </tr>
+</table>
+<br />
 <body>
     <br />
     <br />
 
     <input id="btn" type="button" value="Get All Movies" />
+
     <input id="btnClear" type="button" value="Clear" />
     <!--<input id="btnCreate" type="button" value="Create"/>-->
     <ul id="ulMovies"></ul>
