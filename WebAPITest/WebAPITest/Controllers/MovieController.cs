@@ -64,15 +64,15 @@ namespace WebAPITest.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
             }
         }
-        private bool Add(Movie movie)
-        {
-            int newId = 0;
-            List<Movie> list = new List<Movie>();
+        //private bool Add(Movie movie)
+        //{
+        //    int newId = 0;
+        //    List<Movie> list = new List<Movie>();
 
-            newId = list.Max(p => p.Id);
-            list.Add(movie);
-            return true;
-        }
+        //    newId = list.Max(p => p.Id);
+        //    list.Add(movie);
+        //    return true;
+        //}
 
 
         // PUT api/values/5
