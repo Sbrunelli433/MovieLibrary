@@ -19,104 +19,106 @@
 
 <body>
     <div class="container">
+
         <div class="row">
             <div class="col-sm-12">
                 <h2>Steve's Movie Library</h2>
             </div>
         </div>
-    </div>
-<!--</body>-->
 
-<h5 class="text-danger">
-    <b>Note:</b>Please Enter all details correctly and submit
-    Here i did not applied validations to this form
-</h5>
-<div>
-    <div class="row">
-        <div class="col-sm-6">
-            <table id="moviesTable"
-                   class="table table-bordered
+        <!--</body>-->
+
+        <h5 class="text-danger">
+            <b>Note:</b>Please Enter all details correctly and submit
+            Here i did not applied validations to this form
+        </h5>
+        <div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <table id="moviesTable"
+                           class="table table-bordered
                    table-condensed table-striped">
-                <thead>
-                    <tr>
-                        <th align="center">Edit</th>
-                        <th align="center">Index</th>
-                        <th align="center">Movie Title</th>
-                        <th align="center">Director's Name</th>
-                        <th align="center">Movie Genre</th>
-                        <th align="center">Save Changes</th>
-                    </tr>
-                </thead>
-                <tbody id="tb">
-                    <tr></tr>
-                </tbody>
-            </table>
-            <div class="form-inline">
+                        <thead>
+                            <tr>
+                                <th align="center">Edit</th>
+                                <th align="center">Index</th>
+                                <th align="center">Movie Title</th>
+                                <th align="center">Director's Name</th>
+                                <th align="center">Movie Genre</th>
+                                <th align="center">Save Changes</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tb">
+                            <tr></tr>
+                        </tbody>
+                    </table>
+                    <div class="form-inline">
 
 
-                <div class="form-row">
-                    <div class="col-sm-6">
-                        <button type="button" id="btn"
-                                class="btn btn-primary"
-                                onclick="addClick();">
-                            Get All Movies
-                        </button>
-                    </div>
-                </div>
-                <br />
-                <div class="form-row">
-                    <div class="col-sm-6">
-                        <button type="button" id="btnClear"
-                                class="btn btn-primary"
-                                onclick="btnClear();">
-                            Clear Table
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-<div>
-    <div class="row">
-        <div class="col-sm-6">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    Add movie to list by entering the information below
-                </div>
-                <div class="panel-body">
-                    <form name="postform" id="postform" class="form-horizontal">
-                        <div class="form-group">
-                            <label class="text-info">Movie Title</label>
-                            <input type="text" id="movieTitle" class="form-control" />
-                        </div>
-                        <div class="form-group">
-                            <label class="text-info">Director Name</label>
-                            <input type="text" id="directorName" class="form-control" />
-                        </div>
-                        <div class="form-group">
-                            <label class="text-info">Genre</label>
-                            <input type="text" id="genre" class="form-control" />
-                        </div>
-                        <div class="panel-footer">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <button type="submit" id="submit"
-                                            class="btn btn-primary"
-                                            onclick="updateClick();">
-                                        Submit New Movie
-                                    </button>
-                                </div>
+                        <div class="form-row">
+                            <div class="col-sm-6">
+                                <button type="button" id="btn"
+                                        class="btn btn-primary"
+                                        onclick="addClick();">
+                                    Get All Movies
+                                </button>
                             </div>
                         </div>
-                    </form>
+                        <br />
+                        <div class="form-row">
+                            <div class="col-sm-6">
+                                <button type="button" id="btnClear"
+                                        class="btn btn-primary"
+                                        onclick="btnClear();">
+                                    Clear Table
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            Add movie to list by entering the information below
+                        </div>
+                        <div class="panel-body">
+                            <form name="postform" id="postform" class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="text-info">Movie Title</label>
+                                    <input type="text" id="movieTitle" class="form-control" maxlength="25"/>
+                                </div>
+                                <div class="form-group">
+                                    <label class="text-info">Director Name</label>
+                                    <input type="text" id="directorName" class="form-control" maxlength="25"/>
+                                </div>
+                                <div class="form-group">
+                                    <label class="text-info">Genre</label>
+                                    <input type="text" id="genre" class="form-control" maxlength="15" />
+                                </div>
+                                <div class="panel-footer">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <button type="submit" id="submit"
+                                                    class="btn btn-primary"
+                                                    onclick="updateClick();">
+                                                Submit New Movie
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 <script>
     function updateClick() {
@@ -188,9 +190,8 @@
                             "<button type='button' " +
                             "onclick='#btnEdit'(this);' " +
                             "class='btn btn-default' " +
-                            "data-id='" + movieId + "'>" +
-                            "<span class='glyphicon glyphicon-edit' />"
-                            + "</button>" +
+                            "data-id='" + movieId + "'>" + "Edit"+
+                            "</button>" +
                             "</td >" +
                             "<td display='none' id='movieNumber + @movieId' >" + movieId + "</td>" +
                             "<td>" + movie + "</td>" +
@@ -198,9 +199,8 @@
                             "<td>" + movieGenre + "</td>" +
                             "<td>" +
                             "<button type='button' " +
-                            "onclick='productDelete(this);' " +
-                            "class='btn btn-default'>" +
-                            "<span class='glyphicon glyphicon-remove' />" +
+                            "onclick='#Save'(this);' " +
+                            "class='btn btn-default'>" + "Save" + 
                             "</button>" +
                             "</td>" +
 
