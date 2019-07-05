@@ -20,34 +20,14 @@ namespace WebAPITest.Controllers
         [HttpGet]
         public IHttpActionResult Get()
         {
-
-
-            //List<string> listOfMovies = db.Movies.AsEnumerable();
-            //var moviesList = db.Movies.ToList().AsEnumerable();
-
+            IHttpActionResult ret = null;
             var moviesList = db.Movies.ToList();
-            return Ok(moviesList);
-
-
-            //var moviesList = db.Movies.ToList();
-            //return moviesList;
-            //List<Movie> moviesList = new List<Movie>();
-
-            //HttpResponseMessage response;
-            //response = Request.CreateResponse(HttpStatusCode.OK, moviesList);
-            //return response;
-            //List<string> moviesList = new List<string>();
-
-
-
-
-
-            //return new string[] { "movie1 string", "movie2 string" };
+            ret= Ok(moviesList);
+            return ret;
         }
 
 
         // GET api/values/5
-
         //[Route("movies/all")]
         [HttpGet]
         public HttpResponseMessage Get(int id)
@@ -84,7 +64,15 @@ namespace WebAPITest.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
             }
         }
+        private bool Add(Movie movie)
+        {
+            int newId = 0;
+            List<Movie> list = new List<Movie>();
 
+            newId = list.Max(p => p.Id);
+            list.Add(movie);
+            return true;
+        }
 
 
         // PUT api/values/5
