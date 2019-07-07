@@ -38,7 +38,7 @@
                 <div class="col-sm-6">
                     <table id="moviesTable"
                            class="table table-bordered
-                   table-condensed table-striped">
+                            table-condensed table-striped">
                         <thead>
                             <tr>
                                 <th align="center">Edit</th>
@@ -53,6 +53,8 @@
                             <tr></tr>
                         </tbody>
                     </table>
+
+
                     <div class="form-inline">
 
 
@@ -182,17 +184,20 @@
                     dataType: 'json',
                     success: function (data) {
                         ulMovies.empty();
+                        $("#editForm").hide();
+
                         $.each(data, function (index, val) {
                             //var index = val.index;
                             var movie = val.Title;
                             var movieDirector = val.DirectorName;
                             var movieGenre = val.Genre;
-                            var movieId = val.Id
+                            var movieId = val.Id;
                             $("#tb").append("<tr>" +
                                 "<td>" +
                                 "<button type='button' " +
-                                "onclick='#Save(this);' " +
-                                "class='btn btn-default' " +
+                                "id='btnEdit' " +
+                                "class ='btn btn-primary'" +
+                                "onclick='#btnEdit(this);' " +
                                 "data-id='" + movieId + "'>" + "Edit" +
                                 "</button>" +
                                 "</td >" +
@@ -202,8 +207,10 @@
                                 "<td>" + movieGenre + "</td>" +
                                 "<td>" +
                                 "<button type='button' " +
-                                "onclick='#Save'(this);' " +
-                                "class='btn btn-default'>" + "Save" +
+                                "id='Save' " +
+                                "class ='btn btn-primary'" +
+                                "onclick='#Save(this);' " +
+                                "data-id='" + movieId + "'>" + "Save" +
                                 "</button>" +
                                 "</td>" +
                                 "</tr>");
@@ -211,6 +218,21 @@
                     }
                 });
             });
+
+            $('#btnEdit').click(function editMovie(ctl) {
+                var id = $(ctl).data("id");
+                $("#movieid").val(id);
+                $.ajax({
+                    url: 'http://localhost:36354/api/Movie/' + movieId,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        $('#result').html(data);
+                        $('#myModal').modal('show');
+                    }
+                })
+            })
+
             $("#Save").click(function () {
                 $.ajax({
                     url: 'http://localhost:36354/api/Movie/' + movieId,
@@ -219,30 +241,28 @@
                     data: movie,
                     success: function (data, textStatus, xhr) {
                         console.log(data);
+                        alert('Movie Info Updated!');
                     },
                 })
             })
             var _row = null;
 
-            $('#btnEdit').click(function () {
+            $('#btnEdit').click(function (e) {
+
             })
+            function createModal() {
+
+            }
+
             $('#btnClear').click(function () {
                 tb.empty();
                 ulMovies.empty();
                 //moviesTable.empty();
             });
         });
+
     </script>
-    <!--</head>
-    <br />
-    <body>
-        <br />
-        <br />-->
-    <!--<input id="btn" type="button" value="Get All Movies" />
-    <input id="btnEdit" type="button" value="Edit" />
-    <input id="Save" type="button" value="Save Data" />
-    <input id="btnClear" type="button" value="Clear" />
-    <ul id="ulMovies"></ul>-->
+
 
 </body>
 </html>
