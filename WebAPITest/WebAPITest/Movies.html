@@ -8,6 +8,7 @@
 
     <link href="Content/bootstrap.min.css"
           rel="stylesheet" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script src="Scripts/jquery-3.4.1.min.js"
             </script>
     <script src="Scripts/bootstrap.bundle.min.js"
@@ -74,45 +75,55 @@
                                 </button>
                             </div>
                         </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <div>
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            Add movie to list by entering the information below
-                        </div>
-                        <div class="panel-body">
-                            <form name="postform" id="postform" class="form-horizontal">
-                                <div class="form-group">
-                                    <label class="text-info">Movie Title</label>
-                                    <input type="text" id="movieTitle" class="form-control" maxlength="25"/>
-                                </div>
-                                <div class="form-group">
-                                    <label class="text-info">Director Name</label>
-                                    <input type="text" id="directorName" class="form-control" maxlength="25"/>
-                                </div>
-                                <div class="form-group">
-                                    <label class="text-info">Genre</label>
-                                    <input type="text" id="genre" class="form-control" maxlength="15" />
-                                </div>
-                                <div class="panel-footer">
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <button type="submit" id="submit"
-                                                    class="btn btn-primary"
-                                                    onclick="updateClick();">
-                                                Submit New Movie
-                                            </button>
+                        <div class="form-row">
+                            <div class="col-sm-6">
+                                <div class="w3-container">
+                                    <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-primary">Add New Movie!</button>
+                                    <div id="id01" class="w3-modal">
+                                        <div class="w3-modal-content">
+                                            <div class="w3-container">
+                                                <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <div class="panel panel-primary">
+                                                            <div class="panel-heading">
+                                                                Add movie to list by entering the information below
+                                                            </div>
+                                                            <div class="panel-body">
+                                                                <form name="postform" id="postform" class="form-horizontal">
+                                                                    <div class="form-group">
+                                                                        <label class="text-info">Movie Title</label>
+                                                                        <input type="text" id="movieTitle" class="form-control" maxlength="25" />
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="text-info">Director Name</label>
+                                                                        <input type="text" id="directorName" class="form-control" maxlength="25" />
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="text-info">Genre</label>
+                                                                        <input type="text" id="genre" class="form-control" maxlength="15" />
+                                                                    </div>
+                                                                    <div class="panel-footer">
+                                                                        <div class="row">
+                                                                            <div class="col-sm-6">
+                                                                                <button type="submit" id="submit"
+                                                                                        class="btn btn-primary"
+                                                                                        onclick="updateClick();">
+                                                                                    Submit New Movie
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -120,112 +131,113 @@
         </div>
     </div>
 
-<script>
-    function updateClick() {
-        //Movie = new Object();
-        //Movie.Title = $("#movieTitle").val();
-        //Movie.DirectorName = $("#directorName").val();
-        //Movie.Genre = $("genre").val();
-        //if ($("#updateButton").text().trim() == "Add") {
-        //}
-    }
-    function addClick() {
-    }
-    function btnClear() {
-    }
-</script>
+    <script>
+        function updateClick() {
+            //Movie = new Object();
+            //Movie.Title = $("#movieTitle").val();
+            //Movie.DirectorName = $("#directorName").val();
+            //Movie.Genre = $("genre").val();
+            //if ($("#updateButton").text().trim() == "Add") {
+            //}
+        }
+        function addClick() {
+        }
+        function btnClear() {
+        }
+    </script>
 
 
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("#postform").submit(function (e) {
-            e.preventDefault();
-            var apiurl = 'http://localhost:36354/api/Movie';
-            var data = {
-                Title: $("#movieTitle").val().trim(),
-                DirectorName: $("#directorName").val().trim(),
-                Genre: $("#genre").val().trim(),
-            }
-            $.ajax({
-                url: apiurl,
-                type: 'POST',
-                dataType: 'json',
-                data: data,
-                success: function (d) {
-                    console.log("yay!", d);
-                    alert("Saved Successfully");
-                    document.getElementById("postform").reset();
-                },
-                error: function () {
-                    alert("Error, please try again");
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#postform").submit(function (e) {
+                e.preventDefault();
+                var apiurl = 'http://localhost:36354/api/Movie';
+                var data = {
+                    Title: $("#movieTitle").val().trim(),
+                    DirectorName: $("#directorName").val().trim(),
+                    Genre: $("#genre").val().trim(),
                 }
+                $.ajax({
+                    url: apiurl,
+                    type: 'POST',
+                    dataType: 'json',
+                    data: data,
+                    success: function (d) {
+                        console.log("yay!", d);
+                        alert("Saved Successfully");
+                        document.getElementById("postform").reset();
+                    },
+                    error: function () {
+                        alert("Error, please try again");
+                    }
+                })
+            });
+            var ulMovies = $('#ulMovies');
+            //var moviesTable = $('#moviesTable');
+            var tb = $('#tb');
+            $('#btn').click(function () {
+                $.ajax({
+                    type: 'GET',
+                    url: 'api/Movie',
+                    dataType: 'json',
+                    success: function (data) {
+                        ulMovies.empty();
+                        $.each(data, function (index, val) {
+                            //var index = val.index;
+                            var movie = val.Title;
+                            var movieDirector = val.DirectorName;
+                            var movieGenre = val.Genre;
+                            var movieId = val.Id
+                            $("#tb").append("<tr>" +
+                                "<td>" +
+                                "<button type='button' " +
+                                "onclick='#Save(this);' " +
+                                "class='btn btn-default' " +
+                                "data-id='" + movieId + "'>" + "Edit" +
+                                "</button>" +
+                                "</td >" +
+                                "<td display='none' id='movieNumber + @movieId' >" + movieId + "</td>" +
+                                "<td>" + movie + "</td>" +
+                                "<td>" + movieDirector + "</td>" +
+                                "<td>" + movieGenre + "</td>" +
+                                "<td>" +
+                                "<button type='button' " +
+                                "onclick='#Save'(this);' " +
+                                "class='btn btn-default'>" + "Save" +
+                                "</button>" +
+                                "</td>" +
+                                "</tr>");
+                        });
+                    }
+                });
+            });
+            $("#Save").click(function () {
+                $.ajax({
+                    url: 'http://localhost:36354/api/Movie/' + movieId,
+                    type: 'PUT',
+                    dataType: 'application/json',
+                    data: movie,
+                    success: function (data, textStatus, xhr) {
+                        console.log(data);
+                    },
+                })
             })
-        });
-        var ulMovies = $('#ulMovies');
-        //var moviesTable = $('#moviesTable');
-        var tb = $('#tb');
-        $('#btn').click(function () {
-            $.ajax({
-                type: 'GET',
-                url: 'api/Movie',
-                dataType: 'json',
-                success: function (data) {
-                    ulMovies.empty();
-                    $.each(data, function (index, val) {
-                        //var index = val.index;
-                        var movie = val.Title;
-                        var movieDirector = val.DirectorName;
-                        var movieGenre = val.Genre;
-                        var movieId = val.Id
-                        $("#tb").append("<tr>" +
-                            "<td>" +
-                            "<button type='button' " +
-                            "onclick='#btnEdit'(this);' " +
-                            "class='btn btn-default' " +
-                            "data-id='" + movieId + "'>" + "Edit"+
-                            "</button>" +
-                            "</td >" +
-                            "<td display='none' id='movieNumber + @movieId' >" + movieId + "</td>" +
-                            "<td>" + movie + "</td>" +
-                            "<td>" + movieDirector + "</td>" +
-                            "<td>" + movieGenre + "</td>" +
-                            "<td>" +
-                            "<button type='button' " +
-                            "onclick='#Save'(this);' " +
-                            "class='btn btn-default'>" + "Save" + 
-                            "</button>" +
-                            "</td>" +
-                            "</tr>");
-                    });
-                }
+            var _row = null;
+
+            $('#btnEdit').click(function () {
+            })
+            $('#btnClear').click(function () {
+                tb.empty();
+                ulMovies.empty();
+                //moviesTable.empty();
             });
         });
-        $("#Save").click(function () {
-            $.ajax({
-                url: 'http://localhost:36354/api/Movie/' + movieId,
-                type: 'PUT',
-                dataType: 'application/json',
-                data: movie,
-                success: function (data, textStatus, xhr) {
-                    console.log(data);
-                },
-            })
-        })
-        $('#btnEdit').click(function () {
-        })
-        $('#btnClear').click(function () {
-            tb.empty();
-            ulMovies.empty();
-            //moviesTable.empty();
-        });
-    });
-</script>
-<!--</head>
-<br />
-<body>
+    </script>
+    <!--</head>
     <br />
-    <br />-->
-
+    <body>
+        <br />
+        <br />-->
     <!--<input id="btn" type="button" value="Get All Movies" />
     <input id="btnEdit" type="button" value="Edit" />
     <input id="Save" type="button" value="Save Data" />
