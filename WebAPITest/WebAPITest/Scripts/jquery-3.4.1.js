@@ -2622,7 +2622,8 @@ compile = Sizzle.compile = function( selector, match /* Internal Use Only */ ) {
 		// Cache the compiled function
 		cached = compilerCache( selector, matcherFromGroupMatchers( elementMatchers, setMatchers ) );
 
-		// Save selector and tokenization
+		// 
+ selector and tokenization
 		cached.selector = selector;
 	}
 	return cached;

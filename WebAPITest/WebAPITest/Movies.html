@@ -127,20 +127,16 @@
         //Movie.DirectorName = $("#directorName").val();
         //Movie.Genre = $("genre").val();
         //if ($("#updateButton").text().trim() == "Add") {
-
         //}
     }
     function addClick() {
-
     }
     function btnClear() {
-
     }
 </script>
 
 
 <script type="text/javascript">
-
     $(document).ready(function () {
         $("#postform").submit(function (e) {
             e.preventDefault();
@@ -149,9 +145,7 @@
                 Title: $("#movieTitle").val().trim(),
                 DirectorName: $("#directorName").val().trim(),
                 Genre: $("#genre").val().trim(),
-
             }
-
             $.ajax({
                 url: apiurl,
                 type: 'POST',
@@ -167,11 +161,9 @@
                 }
             })
         });
-
         var ulMovies = $('#ulMovies');
         //var moviesTable = $('#moviesTable');
         var tb = $('#tb');
-
         $('#btn').click(function () {
             $.ajax({
                 type: 'GET',
@@ -203,15 +195,11 @@
                             "class='btn btn-default'>" + "Save" + 
                             "</button>" +
                             "</td>" +
-
                             "</tr>");
-
                     });
-
                 }
             });
         });
-
         $("#Save").click(function () {
             $.ajax({
                 url: 'http://localhost:36354/api/Movie/' + movieId,
@@ -221,24 +209,18 @@
                 success: function (data, textStatus, xhr) {
                     console.log(data);
                 },
-
             })
         })
-
         $('#btnEdit').click(function () {
-
         })
-
         $('#btnClear').click(function () {
             tb.empty();
             ulMovies.empty();
             //moviesTable.empty();
         });
     });
-
 </script>
 <!--</head>
-
 <br />
 <body>
     <br />
