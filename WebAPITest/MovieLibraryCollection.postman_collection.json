@@ -1,0 +1,960 @@
+{
+	"info": {
+		"_postman_id": "e798b6ed-a32f-4233-ad83-4cfdd834d115",
+		"name": "MovieLibraryCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Movies",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"text\": \"The Departed\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:36354/api/movie/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "36354",
+					"path": [
+						"api",
+						"movie",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get All Movies",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"text\": \"The Departed\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:36354/api/movie/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "36354",
+							"path": [
+								"api",
+								"movie",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Expires",
+							"value": "-1"
+						},
+						{
+							"key": "Server",
+							"value": "Microsoft-IIS/10.0"
+						},
+						{
+							"key": "X-AspNet-Version",
+							"value": "4.0.30319"
+						},
+						{
+							"key": "X-SourceFiles",
+							"value": "=?UTF-8?B?QzpcVXNlcnNcYnJ1bmVcRGVza3RvcFxEQ0NcV2Vla18wOVxNb3ZpZUxpYnJhcnlcTW92aWVMaWJyYXJ5XFdlYkFQSVRlc3RcV2ViQVBJVGVzdFxhcGlcbW92aWVc?="
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "ASP.NET"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 03 Jul 2019 16:05:47 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "505"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"Id\": 1,\n        \"Title\": \"The Lion King\",\n        \"DirectorName\": \"Rob Minkoff\",\n        \"Genre\": \"Animated\"\n    },\n    {\n        \"Id\": 2,\n        \"Title\": \"The Dark Knight\",\n        \"DirectorName\": \"Christopher Nolan\",\n        \"Genre\": \"Drama\"\n    },\n    {\n        \"Id\": 3,\n        \"Title\": \"Inception\",\n        \"DirectorName\": \"Christopher Nolan\",\n        \"Genre\": \"Drama\"\n    },\n    {\n        \"Id\": 4,\n        \"Title\": \"Pineapple Express\",\n        \"DirectorName\": \"David Gordon Green\",\n        \"Genre\": \"Comedy\"\n    },\n    {\n        \"Id\": 5,\n        \"Title\": \"Die Hard\",\n        \"DirectorName\": \"John McTiernan\",\n        \"Genre\": \"Action\"\n    },\n    {\n        \"Id\": 6,\n        \"Title\": \"Requiem For A Dream\",\n        \"DirectorName\": \"Darren Aronofsky\",\n        \"Genre\": \"Creepy\"\n    }\n]"
+				},
+				{
+					"name": "Post",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"text\": \"Test item\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:36354/api/movie",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "36354",
+							"path": [
+								"api",
+								"movie"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Expires",
+							"value": "-1"
+						},
+						{
+							"key": "Server",
+							"value": "Microsoft-IIS/10.0"
+						},
+						{
+							"key": "X-AspNet-Version",
+							"value": "4.0.30319"
+						},
+						{
+							"key": "X-SourceFiles",
+							"value": "=?UTF-8?B?QzpcVXNlcnNcYnJ1bmVcRGVza3RvcFxEQ0NcV2Vla18wOVxNb3ZpZUxpYnJhcnlcTW92aWVMaWJyYXJ5XFdlYkFQSVRlc3RcV2ViQVBJVGVzdFxhcGlcbW92aWU=?="
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "ASP.NET"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 02 Jul 2019 20:25:03 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "2"
+						}
+					],
+					"cookie": [],
+					"body": "[]"
+				}
+			]
+		},
+		{
+			"name": "Get Movie by id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:36354/api/movie/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "36354",
+					"path": [
+						"api",
+						"movie",
+						"2"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Movie by id",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:36354/api/movie/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "36354",
+							"path": [
+								"api",
+								"movie",
+								"2"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Expires",
+							"value": "-1"
+						},
+						{
+							"key": "Server",
+							"value": "Microsoft-IIS/10.0"
+						},
+						{
+							"key": "X-AspNet-Version",
+							"value": "4.0.30319"
+						},
+						{
+							"key": "X-SourceFiles",
+							"value": "=?UTF-8?B?QzpcVXNlcnNcYnJ1bmVcRGVza3RvcFxEQ0NcV2Vla18wOVxNb3ZpZUxpYnJhcnlcTW92aWVMaWJyYXJ5XFdlYkFQSVRlc3RcV2ViQVBJVGVzdFxhcGlcbW92aWVcMg==?="
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "ASP.NET"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 03 Jul 2019 16:05:36 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "85"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"Id\": 2,\n    \"Title\": \"The Dark Knight\",\n    \"DirectorName\": \"Christopher Nolan\",\n    \"Genre\": \"Drama\"\n}"
+				},
+				{
+					"name": "Post",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"text\": \"Test item\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:36354/api/movie",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "36354",
+							"path": [
+								"api",
+								"movie"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Expires",
+							"value": "-1"
+						},
+						{
+							"key": "Server",
+							"value": "Microsoft-IIS/10.0"
+						},
+						{
+							"key": "X-AspNet-Version",
+							"value": "4.0.30319"
+						},
+						{
+							"key": "X-SourceFiles",
+							"value": "=?UTF-8?B?QzpcVXNlcnNcYnJ1bmVcRGVza3RvcFxEQ0NcV2Vla18wOVxNb3ZpZUxpYnJhcnlcTW92aWVMaWJyYXJ5XFdlYkFQSVRlc3RcV2ViQVBJVGVzdFxhcGlcbW92aWU=?="
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "ASP.NET"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 02 Jul 2019 20:25:03 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "2"
+						}
+					],
+					"cookie": [],
+					"body": "[]"
+				}
+			]
+		},
+		{
+			"name": "Post new Movie to database",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Title\": \"Requiem For A Dream\",\n    \"DirectorName\": \"Darren Aronofsky\",\n    \"Genre\": \"Creepy\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:36354/api/movie/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "36354",
+					"path": [
+						"api",
+						"movie",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Post",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"text\": \"Test item\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:36354/api/movie",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "36354",
+							"path": [
+								"api",
+								"movie"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Expires",
+							"value": "-1"
+						},
+						{
+							"key": "Server",
+							"value": "Microsoft-IIS/10.0"
+						},
+						{
+							"key": "X-AspNet-Version",
+							"value": "4.0.30319"
+						},
+						{
+							"key": "X-SourceFiles",
+							"value": "=?UTF-8?B?QzpcVXNlcnNcYnJ1bmVcRGVza3RvcFxEQ0NcV2Vla18wOVxNb3ZpZUxpYnJhcnlcTW92aWVMaWJyYXJ5XFdlYkFQSVRlc3RcV2ViQVBJVGVzdFxhcGlcbW92aWU=?="
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "ASP.NET"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 02 Jul 2019 20:25:03 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "2"
+						}
+					],
+					"cookie": [],
+					"body": "[]"
+				},
+				{
+					"name": "Post new Movie to database",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"Title\": \"Requiem For A Dream\",\n    \"DirectorName\": \"Darren Aronofsky\",\n    \"Genre\": \"Creepy\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:36354/api/movie/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "36354",
+							"path": [
+								"api",
+								"movie",
+								""
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Expires",
+							"value": "-1"
+						},
+						{
+							"key": "Location",
+							"value": "http://localhost:36354/api/movie/7"
+						},
+						{
+							"key": "Server",
+							"value": "Microsoft-IIS/10.0"
+						},
+						{
+							"key": "X-AspNet-Version",
+							"value": "4.0.30319"
+						},
+						{
+							"key": "X-SourceFiles",
+							"value": "=?UTF-8?B?QzpcVXNlcnNcYnJ1bmVcRGVza3RvcFxEQ0NcV2Vla18wOVxNb3ZpZUxpYnJhcnlcTW92aWVMaWJyYXJ5XFdlYkFQSVRlc3RcV2ViQVBJVGVzdFxhcGlcbW92aWVc?="
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "ASP.NET"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 03 Jul 2019 16:05:59 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "89"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"Id\": 7,\n    \"Title\": \"Requiem For A Dream\",\n    \"DirectorName\": \"Darren Aronofsky\",\n    \"Genre\": \"Creepy\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Put new movie data to the DB",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Title\": \"The Lion King\",\n    \"DirectorName\": \"Rob Minkoff\",\n    \"Genre\": \"Animated\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:36354/api/movie/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "36354",
+					"path": [
+						"api",
+						"movie",
+						"1"
+					]
+				},
+				"description": "Title: \"the Departed\"\nto\nTitle:\"the lion king\"\n\nplus director name and genre... didn't include those in the description because I forgot the departed info.."
+			},
+			"response": [
+				{
+					"name": "Post",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"text\": \"Test item\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:36354/api/movie",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "36354",
+							"path": [
+								"api",
+								"movie"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Expires",
+							"value": "-1"
+						},
+						{
+							"key": "Server",
+							"value": "Microsoft-IIS/10.0"
+						},
+						{
+							"key": "X-AspNet-Version",
+							"value": "4.0.30319"
+						},
+						{
+							"key": "X-SourceFiles",
+							"value": "=?UTF-8?B?QzpcVXNlcnNcYnJ1bmVcRGVza3RvcFxEQ0NcV2Vla18wOVxNb3ZpZUxpYnJhcnlcTW92aWVMaWJyYXJ5XFdlYkFQSVRlc3RcV2ViQVBJVGVzdFxhcGlcbW92aWU=?="
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "ASP.NET"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 02 Jul 2019 20:25:03 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "2"
+						}
+					],
+					"cookie": [],
+					"body": "[]"
+				},
+				{
+					"name": "Put new movie data to the DB",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"Title\": \"The Lion King\",\n    \"DirectorName\": \"Rob Minkoff\",\n    \"Genre\": \"Animated\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:36354/api/movie/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "36354",
+							"path": [
+								"api",
+								"movie",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Expires",
+							"value": "-1"
+						},
+						{
+							"key": "Server",
+							"value": "Microsoft-IIS/10.0"
+						},
+						{
+							"key": "X-AspNet-Version",
+							"value": "4.0.30319"
+						},
+						{
+							"key": "X-SourceFiles",
+							"value": "=?UTF-8?B?QzpcVXNlcnNcYnJ1bmVcRGVza3RvcFxEQ0NcV2Vla18wOVxNb3ZpZUxpYnJhcnlcTW92aWVMaWJyYXJ5XFdlYkFQSVRlc3RcV2ViQVBJVGVzdFxhcGlcbW92aWVcMQ==?="
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "ASP.NET"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 03 Jul 2019 16:06:09 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "80"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"Id\": 1,\n    \"Title\": \"The Lion King\",\n    \"DirectorName\": \"Rob Minkoff\",\n    \"Genre\": \"Animated\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete  movie data from the DB",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Title\": \"The Lion King\",\n    \"DirectorName\": \"Rob Minkoff\",\n    \"Genre\": \"Animated\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:36354/api/movie/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "36354",
+					"path": [
+						"api",
+						"movie",
+						"7"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Post",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"text\": \"Test item\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:36354/api/movie",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "36354",
+							"path": [
+								"api",
+								"movie"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Expires",
+							"value": "-1"
+						},
+						{
+							"key": "Server",
+							"value": "Microsoft-IIS/10.0"
+						},
+						{
+							"key": "X-AspNet-Version",
+							"value": "4.0.30319"
+						},
+						{
+							"key": "X-SourceFiles",
+							"value": "=?UTF-8?B?QzpcVXNlcnNcYnJ1bmVcRGVza3RvcFxEQ0NcV2Vla18wOVxNb3ZpZUxpYnJhcnlcTW92aWVMaWJyYXJ5XFdlYkFQSVRlc3RcV2ViQVBJVGVzdFxhcGlcbW92aWU=?="
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "ASP.NET"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 02 Jul 2019 20:25:03 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "2"
+						}
+					],
+					"cookie": [],
+					"body": "[]"
+				},
+				{
+					"name": "Put new movie data to the DB",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"Title\": \"The Lion King\",\n    \"DirectorName\": \"Rob Minkoff\",\n    \"Genre\": \"Animated\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:36354/api/movie/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "36354",
+							"path": [
+								"api",
+								"movie",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Expires",
+							"value": "-1"
+						},
+						{
+							"key": "Server",
+							"value": "Microsoft-IIS/10.0"
+						},
+						{
+							"key": "X-AspNet-Version",
+							"value": "4.0.30319"
+						},
+						{
+							"key": "X-SourceFiles",
+							"value": "=?UTF-8?B?QzpcVXNlcnNcYnJ1bmVcRGVza3RvcFxEQ0NcV2Vla18wOVxNb3ZpZUxpYnJhcnlcTW92aWVMaWJyYXJ5XFdlYkFQSVRlc3RcV2ViQVBJVGVzdFxhcGlcbW92aWVcMQ==?="
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "ASP.NET"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 03 Jul 2019 16:06:09 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "80"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"Id\": 1,\n    \"Title\": \"The Lion King\",\n    \"DirectorName\": \"Rob Minkoff\",\n    \"Genre\": \"Animated\"\n}"
+				}
+			]
+		}
+	]
+}
