@@ -37,7 +37,7 @@
                     <table id="moviesTable"
                            class="table table-bordered
                             table-condensed table-striped">
-                        <thead>
+                        <thead id="hideme">
                             <tr>
                                 <th align="center">Edit</th>
                                 <th align="center">Index</th>
@@ -110,7 +110,7 @@
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label class="text-info">Genre</label>
-                                                                        </div>
+                                                                    </div>
                                                                     <div>
                                                                         <input type="text" id="genre" class="form-control" maxlength="15" />
                                                                     </div>
@@ -160,114 +160,122 @@
 
 
     <script type="text/javascript">
+        $("#hideme").hide();
         $(document).ready(function () {
-            $("#postform").submit(function (e) {
-                e.preventDefault();
-                var apiurl = 'http://localhost:36354/api/Movie';
-                var data = {
-                    Title: $("#movieTitle").val().trim(),
-                    DirectorName: $("#directorName").val().trim(),
-                    Genre: $("#genre").val().trim(),
-                }
-                $.ajax({
-                    url: apiurl,
-                    type: 'POST',
-                    dataType: 'json',
-                    data: data,
-                    success: function (d) {
-                        console.log("yay!", d);
-                        alert("Saved Successfully");
-                        document.getElementById("postform").reset();
-                    },
-                    error: function () {
-                        alert("Error, please try again");
-                    }
-                })
-            });
-            var ulMovies = $('#ulMovies');
-            //var moviesTable = $('#moviesTable');
-            var tb = $('#tb');
-            $('#btn').click(function () {
-                $.ajax({
-                    type: 'GET',
-                    url: 'api/Movie',
-                    dataType: 'json',
-                    success: function (data) {
-                        ulMovies.empty();
-                        $("#editForm").hide();
-
-                        $.each(data, function (index, val) {
-                            //var index = val.index;
-                            var movie = val.Title;
-                            var movieDirector = val.DirectorName;
-                            var movieGenre = val.Genre;
-                            var movieId = val.Id;
-                            $("#tb").append("<tr>" +
-                                "<td>" +
-                                "<button type='button' " +
-                                "id='btnEdit' " +
-                                "class ='btn btn-primary'" +
-                                "onclick='#btnEdit(this);' " +
-                                "data-id='" + movieId + "'>" + "Edit" +
-                                "</button>" +
-                                "</td >" +
-                                "<td display='none' id='movieNumber + @movieId' >" + movieId + "</td>" +
-                                "<td>" + movie + "</td>" +
-                                "<td>" + movieDirector + "</td>" +
-                                "<td>" + movieGenre + "</td>" +
-                                "<td>" +
-                                "<button type='button' " +
-                                "id='Save' " +
-                                "class ='btn btn-primary'" +
-                                "onclick='#Save(this);' " +
-                                "data-id='" + movieId + "'>" + "Save" +
-                                "</button>" +
-                                "</td>" +
-                                "</tr>");
-                        });
-                    }
+            $(function () {
+                $("#btn").click(function () {
+                    $("thead").show();
                 });
-            });
 
-            $('#btnEdit').click(function editMovie(ctl) {
-                var id = $(ctl).data("id");
-                $("#movieid").val(id);
-                $.ajax({
-                    url: 'http://localhost:36354/api/Movie/' + movieId,
-                    type: 'GET',
-                    dataType: 'json',
-                    success: function (data) {
-                        $('#result').html(data);
-                        $('#myModal').modal('show');
+                $("#postform").submit(function (e) {
+                    e.preventDefault();
+                    var apiurl = 'http://localhost:36354/api/Movie';
+                    var data = {
+                        Title: $("#movieTitle").val().trim(),
+                        DirectorName: $("#directorName").val().trim(),
+                        Genre: $("#genre").val().trim(),
                     }
+                    $.ajax({
+                        url: apiurl,
+                        type: 'POST',
+                        dataType: 'json',
+                        data: data,
+                        success: function (d) {
+                            console.log("yay!", d);
+                            alert("Saved Successfully");
+                            document.getElementById("postform").reset();
+                        },
+                        error: function () {
+                            alert("Error, please try again");
+                        }
+                    })
+                });
+                var ulMovies = $('#ulMovies');
+                //var moviesTable = $('#moviesTable');
+                var tb = $('#tb');
+                $('#btn').click(function () {
+                    $.ajax({
+                        type: 'GET',
+                        url: 'api/Movie',
+                        dataType: 'json',
+                        success: function (data) {
+                            ulMovies.empty();
+                            $("#editForm").hide();
+
+                            $.each(data, function (index, val) {
+                                //var index = val.index;
+                                var movie = val.Title;
+                                var movieDirector = val.DirectorName;
+                                var movieGenre = val.Genre;
+                                var movieId = val.Id;
+
+                                $("#tb").append("<tr>" +
+                                    "<td>" +
+                                    "<button type='button' " +
+                                    "id='btnEdit' " +
+                                    "class ='btn btn-primary'" +
+                                    "onclick='#btnEdit(this);' " +
+                                    "data-id='" + movieId + "'>" + "Edit" +
+                                    "</button>" +
+                                    "</td >" +
+                                    "<td display='none' id='movieNumber + @movieId' >" + movieId + "</td>" +
+                                    "<td>" + movie + "</td>" +
+                                    "<td>" + movieDirector + "</td>" +
+                                    "<td>" + movieGenre + "</td>" +
+                                    "<td>" +
+                                    "<button type='button' " +
+                                    "id='Save' " +
+                                    "class ='btn btn-primary'" +
+                                    "onclick='#Save(this);' " +
+                                    "data-id='" + movieId + "'>" + "Save" +
+                                    "</button>" +
+                                    "</td>" +
+                                    "</tr>");
+                            });
+                        }
+                    });
+                });
+
+                $('#btnEdit').click(function editMovie(ctl) {
+                    var id = $(ctl).data("id");
+                    $("#movieid").val(id);
+                    $.ajax({
+                        url: 'http://localhost:36354/api/Movie/' + movieId,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function (data) {
+                            $('#result').html(data);
+                            $('#myModal').modal('show');
+                        }
+                    })
                 })
-            })
 
-            $("#Save").click(function () {
-                $.ajax({
-                    url: 'http://localhost:36354/api/Movie/' + movieId,
-                    type: 'PUT',
-                    dataType: 'application/json',
-                    data: movie,
-                    success: function (data, textStatus, xhr) {
-                        console.log(data);
-                        alert('Movie Info Updated!');
-                    },
+                $("#Save").click(function () {
+                    $.ajax({
+                        url: 'http://localhost:36354/api/Movie/' + movieId,
+                        type: 'PUT',
+                        dataType: 'application/json',
+                        data: movie,
+                        success: function (data, textStatus, xhr) {
+                            console.log(data);
+                            alert('Movie Info Updated!');
+                        },
+                    })
                 })
-            })
-            var _row = null;
+                var _row = null;
 
-            $('#btnEdit').click(function (e) {
+                $('#btnEdit').click(function (e) {
 
-            })
-            function createModal() {
+                })
+                function createModal() {
 
-            }
+                }
 
-            $('#btnClear').click(function () {
-                tb.empty();
-                ulMovies.empty();
-                //moviesTable.empty();
+                $('#btnClear').click(function () {
+                    tb.empty();
+                    ulMovies.empty();
+                    //moviesTable.empty();
+                });
             });
         });
 
