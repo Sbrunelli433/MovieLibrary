@@ -14,6 +14,8 @@
     <script src="Scripts/bootstrap.bundle.min.js"
             </script>
     <link href="Content/Solar-bootstrap.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 
 
     <script src="http://localhost:36354/Scripts/jquery-3.4.1.js"></script>
@@ -45,6 +47,9 @@
                             </tr>
                         </thead>
                         <tbody id="tb">
+                            <tr></tr>
+                        </tbody>
+                        <tbody id="edit">
                             <tr></tr>
                         </tbody>
                     </table>
@@ -139,6 +144,7 @@
     </div>
     <input type="hidden" id="productid" value="0" />
 
+
     <script>
 
         function updateClick() {
@@ -165,10 +171,23 @@
                 type: 'GET',
                 dataType: 'json',
                 success: function (id) {
-                    $("#movietitle");
-                    $("#directorsName");
-                    $("#genre");
-
+                    var movietitle = id.Title;
+                    var directorsName = id.DirectorName;
+                    var genre = id.Genre;
+                    var movieId = id.Id;
+                    $("#edit").append("<tr>" +
+                        "<td>" + movietitle + "</td>" +
+                        "<td>" + directorsName + "</td>" +
+                        "<td>" + genre + "</td>" +
+                        "<td>" +
+                        "<button type='button' " +
+                        "id='Save' " +
+                        "class ='btn btn-primary'" +
+                        "onclick='Save(this);' " +
+                        "data-id='" + movieId + "'>" + "Save" +
+                        "</button>" +
+                        "</td>" +
+                        "</tr>");
                 },
                 error: function (request, message, error) {
                     handleException(request, message, error);
