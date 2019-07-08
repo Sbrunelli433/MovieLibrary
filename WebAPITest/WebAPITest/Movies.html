@@ -49,9 +49,7 @@
                         <tbody id="tb">
                             <tr></tr>
                         </tbody>
-                        <tbody id="edit">
-                            <tr></tr>
-                        </tbody>
+
                     </table>
                     <div class="form-inline">
 
@@ -145,6 +143,56 @@
     <input type="hidden" id="productid" value="0" />
 
 
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Edit movie information by entering the information below
+                </div>
+                <div class="panel-body">
+                    <form name="edit" id="edit" class="form-horizontal">
+                        <div class="form-group">
+                            <label class="text-info">Movie Title</label>
+                        </div>
+                        <div>
+                            <input type="text" id="movieTitle" class="form-control" maxlength="25" />
+                        </div>
+                        <div class="form-group">
+                            <label class="text-info">Director Name</label>
+                        </div>
+                        <div>
+                            <input type="text" id="directorName" class="form-control" maxlength="25" />
+                        </div>
+                        <div class="form-group">
+                            <label class="text-info">Genre</label>
+                        </div>
+                        <div>
+                            <input type="text" id="genre" class="form-control" maxlength="15" />
+                        </div>
+                        <br />
+                        <div class="panel-footer">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <button type="submit" id="Save"
+                                            class="btn btn-primary"
+                                            onclick="updateClick();">
+                                        Edit Movie
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
     <script>
 
         function updateClick() {
@@ -175,7 +223,12 @@
                     var directorsName = id.DirectorName;
                     var genre = id.Genre;
                     var movieId = id.Id;
+
+
+
                     $("#edit").append("<tr>" +
+
+
                         "<td>" + movietitle + "</td>" +
                         "<td>" + directorsName + "</td>" +
                         "<td>" + genre + "</td>" +
@@ -188,6 +241,7 @@
                         "</button>" +
                         "</td>" +
                         "</tr>");
+
                 },
                 error: function (request, message, error) {
                     handleException(request, message, error);
