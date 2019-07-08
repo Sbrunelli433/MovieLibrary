@@ -142,8 +142,10 @@
             </div>
         </div>
     </div>
+    <input type="hidden" id="productid" value="0" />
 
     <script>
+
         function updateClick() {
             //Movie = new Object();
             //Movie.Title = $("#movieTitle").val();
@@ -155,7 +157,34 @@
         function addClick() {
         }
         function btnClear() {
+
         }
+        function btnEdit(ctl) {
+            var id = $(ctl).attr('data-id');
+            // Store product id in hidden field
+            $("#movieNumber").val(id);
+
+            // Call Web API to get a list of Products
+            $.ajax({
+                url: '/api/Movie/' + id,
+                type: 'GET',
+                dataType: 'json',
+                success: function (id) {
+                    movieToFields(id);
+
+                },
+                error: function (request, message, error) {
+                    handleException(request, message, error);
+                }
+            });
+        }
+        function movieToFields(id) {
+            $("#movietitle");
+            $("#directorsName");
+            $("#genre");
+        }
+
+
     </script>
 
 
@@ -199,7 +228,7 @@
                         url: 'api/Movie',
                         dataType: 'json',
                         success: function (data) {
-                            ulMovies.empty();
+                            //ulMovies.empty();
                             $("#editForm").hide();
 
                             $.each(data, function (index, val) {
@@ -214,7 +243,7 @@
                                     "<button type='button' " +
                                     "id='btnEdit' " +
                                     "class ='btn btn-primary'" +
-                                    "onclick='#btnEdit(this);' " +
+                                    "onclick='btnEdit(this);' " +
                                     "data-id='" + movieId + "'>" + "Edit" +
                                     "</button>" +
                                     "</td >" +
@@ -226,7 +255,7 @@
                                     "<button type='button' " +
                                     "id='Save' " +
                                     "class ='btn btn-primary'" +
-                                    "onclick='#Save(this);' " +
+                                    "onclick='Save(this);' " +
                                     "data-id='" + movieId + "'>" + "Save" +
                                     "</button>" +
                                     "</td>" +
@@ -236,19 +265,7 @@
                     });
                 });
 
-                $('#btnEdit').click(function editMovie(ctl) {
-                    var id = $(ctl).data("id");
-                    $("#movieid").val(id);
-                    $.ajax({
-                        url: 'http://localhost:36354/api/Movie/' + movieId,
-                        type: 'GET',
-                        dataType: 'json',
-                        success: function (data) {
-                            $('#result').html(data);
-                            $('#myModal').modal('show');
-                        }
-                    })
-                })
+
 
                 $("#Save").click(function () {
                     $.ajax({
@@ -264,12 +281,12 @@
                 })
                 var _row = null;
 
-                $('#btnEdit').click(function (e) {
+                //$('#btnEdit').click(function (e) {
 
-                })
-                function createModal() {
+                //})
+                //function createModal() {
 
-                }
+                //}
 
                 $('#btnClear').click(function () {
                     tb.empty();
