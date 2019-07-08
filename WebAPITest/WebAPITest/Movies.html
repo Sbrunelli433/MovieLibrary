@@ -28,9 +28,6 @@
             </div>
         </div>
 
-        <!--</body>-->
-
-
         <div>
             <div class="row">
                 <div class="col-sm-6">
@@ -51,8 +48,6 @@
                             <tr></tr>
                         </tbody>
                     </table>
-
-
                     <div class="form-inline">
 
 
@@ -170,7 +165,9 @@
                 type: 'GET',
                 dataType: 'json',
                 success: function (id) {
-                    movieToFields(id);
+                    $("#movietitle");
+                    $("#directorsName");
+                    $("#genre");
 
                 },
                 error: function (request, message, error) {
@@ -178,11 +175,7 @@
                 }
             });
         }
-        function movieToFields(id) {
-            $("#movietitle");
-            $("#directorsName");
-            $("#genre");
-        }
+
 
 
     </script>
@@ -279,18 +272,15 @@
                         },
                     })
                 })
-                var _row = null;
 
-                //$('#btnEdit').click(function (e) {
 
-                //})
                 //function createModal() {
 
                 //}
 
                 $('#btnClear').click(function () {
                     tb.empty();
-                    ulMovies.empty();
+                    //ulMovies.empty();
                     //moviesTable.empty();
                 });
             });
