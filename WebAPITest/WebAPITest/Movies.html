@@ -150,7 +150,7 @@
                     Edit movie information by entering the information below
                 </div>
                 <div class="panel-body">
-                    <form name="edit" id="edit" class="form-horizontal">
+                    <form name="editMovie" id="editMovie" class="form-horizontal">
                         <div class="form-group">
                             <label class="text-info">Movie Title</label>
                         </div>
@@ -175,8 +175,8 @@
                                 <div class="col-sm-6">
                                     <button type="submit" id="Save"
                                             class="btn btn-primary"
-                                            onclick="updateClick();">
-                                        Edit Movie
+                                            onclick="updateClick();"
+                                            Edit Movie
                                     </button>
                                 </div>
                             </div>
@@ -196,13 +196,14 @@
     <script>
 
         function updateClick() {
-            //Movie = new Object();
-            //Movie.Title = $("#movieTitle").val();
-            //Movie.DirectorName = $("#directorName").val();
-            //Movie.Genre = $("genre").val();
-            //if ($("#updateButton").text().trim() == "Add") {
-            //}
+            Movie = new Object();
+            Movie.Title = $("#movieTitle").val();
+            Movie.DirectorName = $("#directorName").val();
+            Movie.Genre = $("genre").val();
+
         }
+
+
         function addClick() {
         }
         function btnClear() {
@@ -224,10 +225,7 @@
                     var genre = id.Genre;
                     var movieId = id.Id;
 
-
-
                     $("#edit").append("<tr>" +
-
 
                         "<td>" + movietitle + "</td>" +
                         "<td>" + directorsName + "</td>" +
@@ -248,6 +246,7 @@
                 }
             });
         }
+
 
 
 
@@ -285,8 +284,6 @@
                         }
                     })
                 });
-                var ulMovies = $('#ulMovies');
-                //var moviesTable = $('#moviesTable');
                 var tb = $('#tb');
                 $('#btn').click(function () {
                     $.ajax({
@@ -333,7 +330,8 @@
 
 
 
-                $("#Save").click(function () {
+                $("#Save").updateClick(function updateMovie(e) {
+                    e.preventDefault();
                     $.ajax({
                         url: 'http://localhost:36354/api/Movie/' + movieId,
                         type: 'PUT',
@@ -342,6 +340,7 @@
                         success: function (data, textStatus, xhr) {
                             console.log(data);
                             alert('Movie Info Updated!');
+                            document.getElementById("editMovie").reset();
                         },
                     })
                 })
