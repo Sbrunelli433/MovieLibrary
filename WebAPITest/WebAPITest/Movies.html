@@ -13,6 +13,7 @@
             </script>
     <script src="Scripts/bootstrap.bundle.min.js"
             </script>
+    <link href="Content/Solar-bootstrap.css" rel="stylesheet" />
 
 
     <script src="http://localhost:36354/Scripts/jquery-3.4.1.js"></script>
@@ -29,10 +30,7 @@
 
         <!--</body>-->
 
-        <h5 class="text-danger">
-            <b>Note:</b>Please Enter all details correctly and submit
-            Here i did not applied validations to this form
-        </h5>
+
         <div>
             <div class="row">
                 <div class="col-sm-6">
@@ -84,7 +82,12 @@
                                     <div id="id01" class="w3-modal">
                                         <div class="w3-modal-content">
                                             <div class="w3-container">
-                                                <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                                                <span onclick="document.getElementById('id01').style.display='none'"
+                                                      class="w3-button w3-display-topright">&times;</span>
+                                                <h5 class="text-danger">
+                                                    <b>Note: </b>Please Enter all details correctly and submit
+                                                    here I did not applied validations to this form
+                                                </h5>
                                                 <div class="row">
                                                     <div class="col-sm-6">
                                                         <div class="panel panel-primary">
@@ -95,16 +98,23 @@
                                                                 <form name="postform" id="postform" class="form-horizontal">
                                                                     <div class="form-group">
                                                                         <label class="text-info">Movie Title</label>
+                                                                    </div>
+                                                                    <div>
                                                                         <input type="text" id="movieTitle" class="form-control" maxlength="25" />
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label class="text-info">Director Name</label>
+                                                                    </div>
+                                                                    <div>
                                                                         <input type="text" id="directorName" class="form-control" maxlength="25" />
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label class="text-info">Genre</label>
+                                                                        </div>
+                                                                    <div>
                                                                         <input type="text" id="genre" class="form-control" maxlength="15" />
                                                                     </div>
+                                                                    <br />
                                                                     <div class="panel-footer">
                                                                         <div class="row">
                                                                             <div class="col-sm-6">
